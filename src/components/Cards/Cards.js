@@ -21,7 +21,7 @@ const Cards = ({ results }) => {
                             </div>
                         </div>
                     </div>
-                    <div className={`${styles.badge} badge text-bg-danger position-absolute`}>{status}</div>
+                    <div className={`${styles.badge} badge text-bg-danger position-absolute text-uppercase`}>{status}</div>
                 </div>
             );
          });
