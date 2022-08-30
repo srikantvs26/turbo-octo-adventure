@@ -1,0 +1,46 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.js";
+import Cards from "./components/Cards/Cards";
+import Filters from "./components/Filters/Filters";
+import React, { useState, useEffect } from 'react'
+
+function App() {
+  let [pageNumber, setPageNumber] = useState(1);// state to hold page Number
+  let [fetchedData, updateFetchedData] = useState([]); // state to hold character information
+  let api = `https://rickandmortyapi.com/api/character/?${pageNumber}`;
+  let { info, results } = fetchedData; // destructuring assignment. we will send the results to Card Component. and info to Pagination component.
+  // console.log(results);
+
+  useEffect(() => {
+    (async function () {
+      
+      let data = await fetch(api).then(response => response.json());
+      //  data is a big json object if we want to access data a particular key data.info, data.results we have to use.
+      // console.log(data.info);
+      // console.log(data.results);
+      updateFetchedData(data);
+
+    })();
+
+  }, [api]);
+
+  return (
+    <div className="App">
+      <h1 className="text-center ubuntu my-4">Rick & Morty <span className="text-primary">WiKi</span></h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <Filters />
+          </div>
+          <div className="col-8">
+            <div className="row">
+              <Cards results={results}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
