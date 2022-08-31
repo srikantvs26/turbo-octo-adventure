@@ -3,11 +3,13 @@ import "bootstrap/dist/js/bootstrap.js";
 import Cards from "./components/Cards/Cards";
 import Filters from "./components/Filters/Filters";
 import React, { useState, useEffect } from 'react'
+import Pagination from "./components/Pagination/Pagination";
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1);// state to hold page Number
+  // console.log(pageNumber);
   let [fetchedData, updateFetchedData] = useState([]); // state to hold character information
-  let api = `https://rickandmortyapi.com/api/character/?${pageNumber}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
   let { info, results } = fetchedData; // destructuring assignment. we will send the results to Card Component. and info to Pagination component.
   // console.log(results);
 
@@ -39,6 +41,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Pagination setPageNumber={setPageNumber}/>
     </div>
   );
 }
