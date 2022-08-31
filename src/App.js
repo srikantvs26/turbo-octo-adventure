@@ -1,12 +1,12 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.js";
-import Cards from "./components/Cards/Cards";
-import Filters from "./components/Filters/Filters";
-import React, { useState, useEffect } from 'react'
-import Pagination from "./components/Pagination/Pagination";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import Cards from './components/Cards/Cards';
+import Filters from './components/Filters/Filters';
+import React, { useState, useEffect } from 'react';
+import Pagination from './components/Pagination/Pagination';
 
 function App() {
-  let [pageNumber, setPageNumber] = useState(1);// state to hold page Number
+  let [pageNumber, setPageNumber] = useState(1); // state to hold page Number
   // console.log(pageNumber);
   let [fetchedData, updateFetchedData] = useState([]); // state to hold character information
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
@@ -15,20 +15,19 @@ function App() {
 
   useEffect(() => {
     (async function () {
-      
-      let data = await fetch(api).then(response => response.json());
+      let data = await fetch(api).then((response) => response.json());
       //  data is a big json object if we want to access data a particular key data.info, data.results we have to use.
       // console.log(data.info);
       // console.log(data.results);
       updateFetchedData(data);
-
     })();
-
   }, [api]);
 
   return (
     <div className="App">
-      <h1 className="text-center ubuntu my-4">Rick & Morty <span className="text-primary">WiKi</span></h1>
+      <h1 className="text-center ubuntu my-4">
+        Rick & Morty <span className="text-primary">WiKi</span>
+      </h1>
       <div className="container">
         <div className="row">
           <div className="col-3">
@@ -36,12 +35,12 @@ function App() {
           </div>
           <div className="col-8">
             <div className="row">
-              <Cards results={results}/>
+              <Cards results={results} />
             </div>
           </div>
         </div>
       </div>
-      <Pagination setPageNumber={setPageNumber}/>
+      <Pagination pageNum={setPageNumber} />
     </div>
   );
 }
