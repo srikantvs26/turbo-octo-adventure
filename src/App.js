@@ -4,12 +4,14 @@ import Cards from './components/Cards/Cards';
 import Filters from './components/Filters/Filters';
 import React, { useState, useEffect } from 'react';
 import Pagination from './components/Pagination/Pagination';
+import Search from './components/Search/Search';
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1); // state to hold page Number
-  // console.log(pageNumber);
+  let [search, setSearch] = useState("");
+  console.log(pageNumber);
   let [fetchedData, updateFetchedData] = useState([]); // state to hold character information
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
   let { info, results } = fetchedData; // destructuring assignment. we will send the results to Card Component. and info to Pagination component.
   // console.log(results);
 
@@ -28,6 +30,9 @@ function App() {
       <h1 className="text-center ubuntu my-4">
         Rick & Morty <span className="text-primary">WiKi</span>
       </h1>
+
+      <Search setPageNumber={ setPageNumber}setSearch={setSearch }/>
+
       <div className="container">
         <div className="row">
           <div className="col-3">
@@ -40,7 +45,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Pagination pageNum={setPageNumber} />
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
     </div>
   );
 }
