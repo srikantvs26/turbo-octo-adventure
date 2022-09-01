@@ -3,7 +3,7 @@ import styles from './Cards.module.scss';
 
 const Cards = ({ results }) => {
   // we are destructuring the props
-  console.log(results);
+  // console.log(results);
   let display;
   if (results) {
     display = results.map((eachRes) => {
