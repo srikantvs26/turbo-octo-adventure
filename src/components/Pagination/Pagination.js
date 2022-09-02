@@ -26,11 +26,12 @@ const Pagination = ({ info, pageNumber, setPageNumber }) => {
     <ReactPaginate
       pageCount={info?.pages}
       className="pagination justify-content-center gap-4 my-4 text-white"
-      previousLabel="Prev"
-      nextLabel="Next"
+      previousLabel="< Prev"
+      nextLabel="Next >"
+      pageRangeDisplayed={5}
       previousClassName="btn btn-primary"
       nextClassName="btn btn-primary"
-
+      forcePage={pageNumber===1?0:pageNumber-1}
       pageClassName="page-item"
       pageLinkClassName="page-link"
 
@@ -39,8 +40,10 @@ const Pagination = ({ info, pageNumber, setPageNumber }) => {
     // below data is nothing but event. How we got selected? first console.log(event) then you will come to know.
       // +1 because React-Paginate starts the page with 0, data.selected will be zero.
       onPageChange={(data) => {
-        console.log(data.selected);
-        setPageNumber(data.selected + 1)
+        // console.log(data.selected);
+        setPageNumber(data.selected + 1);
+        // document.body.scrollTop = document.documentElement.scrollTop = 0;
+        window.scrollTo(0, 0);
       }}
     />
     
