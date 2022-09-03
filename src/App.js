@@ -19,8 +19,11 @@ function App() {
   // console.log(info.pages);
   // console.log(JSON.stringify(info));
 
-   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
-  
+  let [status, setStatus] = useState('');
+  let [gender, setGender] = useState('');
+  let [species, setSpecies] = useState('');
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
+
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((response) => response.json());
@@ -39,12 +42,17 @@ function App() {
         Rick & Morty <span className="text-primary">WiKi</span>
       </h1>
 
-      <Search setPageNumber={ setPageNumber} setSearch={setSearch }/>
+      <Search setPageNumber={setPageNumber} setSearch={setSearch} />
 
       <div className="container">
         <div className="row">
           {/* <div className="col-3"> */}
-            <Filters />
+          <Filters
+            setSpecies={setSpecies}
+            setGender={setGender}
+            setStatus={setStatus}
+            setPageNumber={setPageNumber}
+          />
           {/* </div> */}
           <div className="col-8">
             <div className="row">
@@ -53,7 +61,11 @@ function App() {
           </div>
         </div>
       </div>
-      <Pagination info={ info} pageNumber={pageNumber} setPageNumber={setPageNumber} />
+      <Pagination
+        info={info}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+      />
     </div>
   );
 }
