@@ -5,6 +5,26 @@ import Filters from './components/Filters/Filters';
 import React, { useState, useEffect } from 'react';
 import Pagination from './components/Pagination/Pagination';
 import Search from './components/Search/Search';
+import Navbar from './components/Navbar/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Episodes from './Pages/Episodes';
+import Location from './Pages/Location';
+
+function Main() {
+  return (
+    <Router>
+      <div className="App">
+        <Navbar />
+      </div>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/episodes" element={<Episodes />} />
+        <Route path="/location" element={<Location />} />
+      </Routes>
+    </Router>
+  );
+}
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1); // state to hold page Number
@@ -38,10 +58,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-center ubuntu my-4">
-        Rick & Morty <span className="text-primary">WiKi</span>
-      </h1>
-
       <Search setPageNumber={setPageNumber} setSearch={setSearch} />
 
       <div className="container">
@@ -70,4 +86,5 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+export default Main;
