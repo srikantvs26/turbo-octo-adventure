@@ -40,7 +40,8 @@ const Navbar = () => {
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav fs-5">
-            <NavLink className="nav-link ubuntu" to="/" activeClassName="active">
+            <NavLink className="nav-link ubuntu" to="/">
+            {/* <NavLink to="/home" className={(navData) => (navData.isActive ? "active-style" : 'none')}>Home</NavLink> */}
               Characters
             </NavLink>
             <NavLink className="nav-link ubuntu" to="/episodes">
