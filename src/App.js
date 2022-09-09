@@ -38,7 +38,8 @@ function App() {
   // console.log(typeof (info.pages));
   // console.log(info.pages);
   // console.log(JSON.stringify(info));
-
+  // console.log(fetchedData);
+  // console.log(results);
   let [status, setStatus] = useState('');
   let [gender, setGender] = useState('');
   let [species, setSpecies] = useState('');

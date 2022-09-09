@@ -6,7 +6,7 @@ import '../../App.css';
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light mb-4">
-      <div className="container-fluid">
+      <div className="container">
         <Link className="fs-3 ubuntu navbar-brand" to="/">
           Rick & Morty <span className="text-primary">WiKi</span>
         </Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
         >
           <div className="navbar-nav fs-5">
             <NavLink className="nav-link ubuntu" to="/">
-            {/* <NavLink to="/home" className={(navData) => (navData.isActive ? "active-style" : 'none')}>Home</NavLink> */}
+              {/* <NavLink to="/home" className={(navData) => (navData.isActive ? "active-style" : 'none')}>Home</NavLink> */}
               Characters
             </NavLink>
             <NavLink className="nav-link ubuntu" to="/episodes">
