@@ -9,9 +9,10 @@ const Cards = ({ results }) => {
     display = results.map((eachRes) => {
       let { id, name, image, location, status } = eachRes;
       return (
-        <div key={id} className="col-4 position-relative mb-4">
-          <div className={styles.cards}>
-            <img src={image} alt="" className={`img-fluid ${styles.img}`} />
+        <div key={id} className="col-lg-4 col-md-6 col-12 position-relative mb-4   ">
+          <div className={`${styles.cards}`}>
+            <img src={image} alt="" className={`img-fluid ${styles.img}`} width="100%"/>
+            
             <div className="content p-1">
               <div className="fs-4 fw-bold mb-4 text-truncate" title={name}>
                 {name}

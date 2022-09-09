@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Episodes from './Pages/Episodes';
 import Location from './Pages/Location';
+import CardDetails from './components/Cards/CardDetails';
 
 function Main() {
   return (
@@ -19,7 +20,9 @@ function Main() {
       </div>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/:id" element={<CardDetails />} />
         <Route path="/episodes" element={<Episodes />} />
+        <Route path="/episodes/:id" element={<CardDetails />} />
         <Route path="/location" element={<Location />} />
       </Routes>
     </Router>
@@ -71,7 +74,7 @@ function App() {
             setPageNumber={setPageNumber}
           />
           {/* </div> */}
-          <div className="col-8">
+          <div className="col-lg-8 col-12">
             <div className="row">
               <Cards results={results} />
             </div>
